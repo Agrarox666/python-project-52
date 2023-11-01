@@ -7,8 +7,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = 'RENDER' not in os.environ
-ROOT_URLCONF = os.getenv('ROOT_URLCONF')
-WSGI_APPLICATION = os.getenv('WSGI_APPLICATION')
+ROOT_URLCONF = 'task_manager.urls'
+WSGI_APPLICATION = 'task_manager.wsgi.application'
 
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
