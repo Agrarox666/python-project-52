@@ -6,7 +6,7 @@ load_dotenv()
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.getenv('SECRET_KEY')
-DEBUG = os.getenv('DEBUG')
+DEBUG = 'RENDER' not in os.environ
 ROOT_URLCONF = os.getenv('ROOT_URLCONF')
 WSGI_APPLICATION = os.getenv('WSGI_APPLICATION')
 LANGUAGE_CODE = os.getenv('LANGUAGE_CODE')
@@ -17,7 +17,11 @@ USE_TZ = os.getenv('USE_TZ')
 STATIC_URL = os.getenv('STATIC_URL')
 DEFAULT_AUTO_FIELD = os.getenv('DEFAULT_AUTO_FIELD')
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'webserver',]
+ALLOWED_HOSTS = []
+
+RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
+if RENDER_EXTERNAL_HOSTNAME:
+    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 
 INSTALLED_APPS = [
     'django.contrib.admin',
