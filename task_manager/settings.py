@@ -9,13 +9,14 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = 'RENDER' not in os.environ
 ROOT_URLCONF = os.getenv('ROOT_URLCONF')
 WSGI_APPLICATION = os.getenv('WSGI_APPLICATION')
-LANGUAGE_CODE = os.getenv('LANGUAGE_CODE')
-TIME_ZONE = os.getenv('TIME_ZONE')
-USE_I18N = os.getenv('USE_I18N')
-USE_L10N = os.getenv('USE_L10N')
-USE_TZ = os.getenv('USE_TZ')
-STATIC_URL = os.getenv('STATIC_URL')
-DEFAULT_AUTO_FIELD = os.getenv('DEFAULT_AUTO_FIELD')
+
+LANGUAGE_CODE = 'en-us'
+TIME_ZONE = 'UTC'
+USE_I18N = True
+USE_L10N = True
+USE_TZ = True
+STATIC_URL = '/static/'
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 ALLOWED_HOSTS = []
 
