@@ -1,10 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Main</title>
-</head>
-<body>
-<h1>Hello! This is my 4th project!</h1>
-</body>
+<html lang="ru-ru">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Менеджер задач Hexlet</title>
+    {% load django_bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    {% load i18n %}
+  </head>
+  <body class="d-flex flex-column min-vh-100">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="/">{{ app_name }}</a>
+      <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarToggleExternalContent">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarToggleExternalContent">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class= "nav-link" href="/users/">{{ users }}</a>
+          </li>
+          <li class="nav-item">
+            <a class= "nav-link" href="/login/">{{ log_in }}</a>
+          </li>
+          <li class="nav-item">
+            <a class= "nav-link" href="/users/create/">{{ sign_in }}</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  {% get_current_language as LANGUAGE_CODE %}
+    <p>Язык: {{ LANGUAGE_CODE }}</p>
+  </body>
 </html>

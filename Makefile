@@ -1,11 +1,8 @@
 install:
 	poetry install
 
-build:
-	./build.sh
-
 lint:
-	poetry run flake8 page_analyzer
+	poetry run flake8 task_manager
 
 PORT ?= 8000
 start:
