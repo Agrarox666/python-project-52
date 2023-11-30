@@ -20,5 +20,9 @@ from task_manager import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.main)
+    path('', views.MainView.as_view(), name='main'),
+    path('users/', views.GetUsersView.as_view(), name='get_users'),
+    path('users/create/', views.CreateUserView.as_view(), name='user_create'),
+    path('users/<int:pk>/update/', views.UpdateUserView.as_view(), name='user_update'),
+    path('users/<int:pk>/delete/', views.DeleteUserView.as_view(), name='user_delete'),
 ]
