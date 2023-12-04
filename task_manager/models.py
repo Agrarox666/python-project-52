@@ -1,13 +1,11 @@
-from django.db import models
+from django.contrib.auth import get_user_model
+from django.contrib.auth.models import User
+from django.db.models import CharField, DateTimeField
+from django.urls import reverse
 
 
-class User(models.Model):
-    username = models.CharField(max_length=150, unique=True, null=True)
-    first_name = models.CharField(max_length=150, null=True)
-    last_name = models.CharField(max_length=150, null=True)
-    password = models.CharField(max_length=150, unique=True, null=True)
-    created_at = models.DateTimeField(auto_now_add=True)
+class TaskUser(User):
+    created_at = DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.username
-

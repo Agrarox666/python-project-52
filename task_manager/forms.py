@@ -1,10 +1,21 @@
-import django.forms
-from django.forms import ModelForm, TextInput, PasswordInput, CharField
+from django.contrib.auth import get_user_model
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, UserChangeForm, UsernameField
+from django.forms import TextInput, PasswordInput, CharField, Form
 
-from task_manager.models import User
+from task_manager.models import TaskUser
 
 
-class UserForm(ModelForm):
+class CreationForm(UserCreationForm):
+    password1 = CharField(
+        min_length=3, label='Пароль',
+        help_text='Ваш пароль должен содержать как минимум 3 символа.',
+        widget=PasswordInput(attrs={
+            'class': "form-control",
+            'placeholder': "Пароль",
+            'autocomplete': "new-password"}
+        )
+    )
+
     password2 = CharField(
         min_length=3, label='Подтверждение пароля',
         help_text='Для подтверждения введите, пожалуйста, пароль ещё раз.',
@@ -15,9 +26,9 @@ class UserForm(ModelForm):
         )
     )
 
-    class Meta:
-        model = User
-        fields = ['first_name', 'last_name', 'username', 'password']
+    class Meta(UserCreationForm.Meta):
+        model = TaskUser
+        fields = ['first_name', 'last_name', 'username', 'password1', 'password2']
         widgets = {
             'first_name': TextInput(attrs={
                 'class': 'form-control',
@@ -31,19 +42,74 @@ class UserForm(ModelForm):
                 'class': 'form-control',
                 'placeholder': "Фамилия"
             }),
-            'password': PasswordInput(attrs={
-                'class': "form-control",
-                'placeholder': "Пароль",
-                'autocomplete': "new-password",
-                'min_length': 3}
-            )
         }
-        help_texts = {
-            'username': 'Обязательное поле. Не более 150 символов. Только буквы, цифры и символы @/./+/-/_.',
+
+
+class UpdatingForm(UserChangeForm):
+    password1 = CharField(
+        min_length=3, label='Пароль',
+        help_text='Ваш пароль должен содержать как минимум 3 символа.',
+        widget=PasswordInput(attrs={
+            'class': "form-control",
+            'placeholder': "Пароль",
+            'autocomplete': "new-password"}
+        )
+    )
+
+    password2 = CharField(
+        min_length=3, label='Подтверждение пароля',
+        help_text='Для подтверждения введите, пожалуйста, пароль ещё раз.',
+        widget=PasswordInput(attrs={
+            'class': "form-control",
+            'placeholder': "Подтверждение пароля",
+            'autocomplete': "new-password"}
+        )
+    )
+    password = None
+
+    class Meta(UserChangeForm.Meta):
+        model = TaskUser
+        fields = ['first_name', 'last_name', 'username', 'password1', 'password2']
+        widgets = {
+            'first_name': TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': "Имя",
+            }),
+            'username': TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': "Имя пользователя"
+            }),
+            'last_name': TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': "Фамилия"
+            }),
         }
-        labels = {
-            'first_name': "Имя",
-            'last_name': "Фамилия",
-            'username': "Имя пользователя",
-            'password': "Пароль",
-        }
+
+
+class LoginForm(AuthenticationForm):
+    username = UsernameField(widget=TextInput(attrs={
+        'class': "form-control",
+        'placeholder': "Username",
+        'autocomplete': "new-password",
+        'max_length': 150,
+        'autocapitalize': "none",
+    }))
+    password = CharField(widget=PasswordInput(attrs={
+        'class': "form-control",
+        'placeholder': "Password",
+    }))
+
+    '''def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['username'].widget = TextInput(attrs={
+            'class': "form-control",
+            'placeholder': "Username",
+            'autocomplete': "new-password",
+            'max_length': 150,
+            'autocapitalize': "none",
+        })
+        self.fields['password'].widget = PasswordInput(attrs={
+            'class': "form-control",
+            'placeholder': "Password",
+        })
+        '''

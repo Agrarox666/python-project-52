@@ -3,3 +3,5 @@
 python-project-52/__pycache__/
 __pycache__/
 __pycache__
+/users_data_base
+/task_manager/migrations/

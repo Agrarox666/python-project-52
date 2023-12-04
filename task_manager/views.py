@@ -1,83 +1,91 @@
-from django.shortcuts import render, redirect
-from django.utils.translation import gettext
+from django.contrib.auth.views import LoginView, LogoutView
+from django.shortcuts import render
+from django.urls import reverse_lazy
 from django.views import View
-
-from task_manager.forms import UserForm
-from task_manager.models import User
-
-nav_context = {
-    'nav_app_name': gettext('Task Manager'),
-    'nav_users': gettext('Users'),
-    'nav_log_in': gettext('Log in'),
-    'nav_sign_in': gettext('Sign in'),
-}
+from django.views.generic import CreateView, UpdateView, DeleteView
+from task_manager.decorators import CustomLoginRequiredMixin
+from task_manager.forms import CreationForm, LoginForm, UpdatingForm
+from task_manager.models import TaskUser
+from django.contrib import messages
 
 
 class MainView(View):
 
     def get(self, request, *args, **kwargs):
-        return render(request, 'main.html', nav_context)
+        return render(request, 'main.html')
 
 
 class GetUsersView(View):
     def get(self, request, *args, **kwargs):
-        users = User.objects.all()
+        users = TaskUser.objects.all()
         context = {'users': users}
-        context.update(nav_context)
         return render(request, 'users.html', context)
 
 
-class CreateUserView(View):
-    def get(self, request, *args, **kwargs):
-        form = UserForm()
-        context = {'form': form}
-        context.update(nav_context)
-        return render(request, 'create.html', context)
+class CreateUserView(CreateView):
+    form_class = CreationForm
+    template_name = 'create.html'
 
-    def post(self, request, *args, **kwargs):
-        form = UserForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('main')
-        context = {'form': form}
-        context.update(nav_context)
-        return render(request, 'create.html', context)
+    def get_success_url(self):
+        messages.success(self.request, 'Пользователь успешно зарегистрирован')
+        return reverse_lazy('login')
 
 
-class UpdateUserView(View):
-    def get(self, request, *args, **kwargs):
-        user_id = kwargs.get('pk')
-        user = User.objects.get(id=user_id)
-        form = UserForm(instance=user)
+class UpdateUserView(CustomLoginRequiredMixin, UpdateView):
+    form_class = UpdatingForm
+    template_name = 'update.html'
+    model = TaskUser
+    success_url = reverse_lazy('user_update')
 
-        context = {'form': form, 'user_id': user_id}
-        context.update(nav_context)
-        return render(request, 'update.html', context)
+    '''@method_decorator(login_required)
+    def dispatch(self, request, *args, **kwargs):
+        return super(UpdateUserView, self).dispatch(kwargs)'''
 
-    def post(self, request, *args, **kwargs):
-        user_id = kwargs.get('pk')
-        user = User.objects.get(id=user_id)
-        form = UserForm(request.POST, instance=user)
-        if form.is_valid():
-            form.save()
-            return redirect('get_users')
-        context = {'form': form, 'user_id': user_id}
-        context.update(nav_context)
-        return render(request, 'update.html', context)
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
+
+    def get_success_url(self):
+        messages.success(self.request, 'Пользователь успешно изменен')
+        return reverse_lazy('get_users')
 
 
-class DeleteUserView(View):
+class DeleteUserView(CustomLoginRequiredMixin, DeleteView):
+    model = TaskUser
+    template_name = 'delete.html'
 
-    def get(self, request, *args, **kwargs):
-        user_id = kwargs.get('pk')
-        user = User.objects.get(id=user_id)
-        context = {'user': user}
-        context.update(nav_context)
-        return render(request, 'delete.html', context)
+    def get_success_url(self):
+        messages.success(self.request, 'Пользователь успешно удалён')
+        return reverse_lazy('get_users')
 
-    def post(self, request, *args, **kwargs):
-        user_id = kwargs.get('pk')
-        user = User.objects.get(id=user_id)
-        if user:
-            user.delete()
-        return redirect('get_users')
+
+class LoginUserView(LoginView):
+    form_class = LoginForm
+    template_name = 'registration/login.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return dict(list(context.items()))
+
+    def get_success_url(self):
+        messages.success(self.request, 'Вы залогинены')
+        return reverse_lazy('main')
+
+
+class LogoutUserView(LogoutView):
+
+    def get_success_url(self):
+        messages.info(self.request, 'Вы разлогинены')
+        return reverse_lazy('main')
+
+
+class StatusView(View):
+    pass
+
+
+class LabelView(View):
+    pass
+
+
+class TaskView(View):
+    pass
