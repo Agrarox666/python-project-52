@@ -35,7 +35,7 @@ class UpdateUserView(CustomLoginRequiredMixin, UpdateView):
     form_class = UpdatingForm
     template_name = 'update.html'
     model = TaskUser
-    success_url = reverse_lazy('user_update')
+    success_url = reverse_lazy('get_users')
 
     '''@method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
@@ -77,10 +77,6 @@ class LogoutUserView(LogoutView):
     def get_success_url(self):
         messages.info(self.request, 'Вы разлогинены')
         return reverse_lazy('main')
-
-
-class StatusView(View):
-    pass
 
 
 class LabelView(View):

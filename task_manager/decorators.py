@@ -8,14 +8,14 @@ def login_required(fn):
     def wrapper(request, *args, **kwargs):
         if request.user.is_anonymous:
             messages.warning(request,
-                             message="Вы не авторизованы! Пожалуйста, выполните вход.",
+                             message="Вы не авторизованы! Пожалуйста, выполните вход.",  # noqa: E501
                              extra_tags='danger')
             return redirect("login")
         else:
             perm = request.user.id == kwargs['pk']
             if not perm:
                 messages.warning(request,
-                                 message="У вас нет прав для изменения другого пользователя.",
+                                 message="У вас нет прав для изменения другого пользователя.",  # noqa: E501
                                  extra_tags='danger')
                 return redirect('get_users')
             else:
@@ -29,7 +29,6 @@ class CustomLoginRequiredMixin(LoginRequiredMixin):
 
     @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
-
         if not request.user.is_authenticated:
             return self.handle_no_permission()
         return super().dispatch(request, *args, **kwargs)

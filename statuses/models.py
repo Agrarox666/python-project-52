@@ -1,0 +1,14 @@
+from django.db import models
+from django.db.models import DateTimeField, CharField, OneToOneField
+from django.forms import TextInput
+
+from task_manager.models import TaskUser
+
+
+# Create your models here.
+class Status(models.Model):
+    name = CharField(max_length=100, unique=False)
+    created_at = DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name

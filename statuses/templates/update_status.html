@@ -1,9 +1,9 @@
 {% extends "main.html" %}
 
 {% block content %}
-  <h1 class="my-4">Изменение пользователя</h1>
+  <h1 class="my-4">Изменение статуса</h1>
   <div>{{ form.errors }}</div>
-  <form action="{% url 'user_update' pk=user.id %}" method="post">
+  <form action="{% url 'status_update' pk=status.id %}" method="post">
     {% csrf_token %}
     {% for field in form %}
       <div class="mb-3">

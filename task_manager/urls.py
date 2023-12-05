@@ -23,11 +23,11 @@ urlpatterns = [
     path('', views.MainView.as_view(), name='main'),
     path('users/', views.GetUsersView.as_view(), name='get_users'),
     path('users/create/', views.CreateUserView.as_view(), name='user_create'),
-    path('users/<int:pk>/update/', views.UpdateUserView.as_view(), name='user_update'),
-    path('users/<int:pk>/delete/', views.DeleteUserView.as_view(), name='user_delete'),
+    path('users/<int:pk>/update/', views.UpdateUserView.as_view(), name='user_update'),  # noqa: E501
+    path('users/<int:pk>/delete/', views.DeleteUserView.as_view(), name='user_delete'),  # noqa: E501
     path('login/', views.LoginUserView.as_view(), name='login'),
     path('logout/', views.LogoutUserView.as_view(), name='logout'),
-    path('statuses/', views.StatusView.as_view(), name='get_statuses'),
-    path('statuses/', views.LabelView.as_view(), name='get_labels'),
-    path('statuses/', views.TaskView.as_view(), name='get_tasks'),
+    path('statuses/', include('statuses.urls')),
+    path('labels/', views.LabelView.as_view(), name='get_labels'),
+    path('tasks/', views.TaskView.as_view(), name='get_tasks'),
 ]

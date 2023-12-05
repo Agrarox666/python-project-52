@@ -1,9 +1,9 @@
 {% extends "main.html" %}
 
 {% block content %}
-  <h1 class="my-4">Изменение пользователя</h1>
+  <h1 class="my-4">Создать статус</h1>
   <div>{{ form.errors }}</div>
-  <form action="{% url 'user_update' pk=user.id %}" method="post">
+  <form action="{% url 'status_create' %}" method="post">
     {% csrf_token %}
     {% for field in form %}
       <div class="mb-3">
@@ -12,6 +12,6 @@
         <div class="form-text">{{ field.help_text }}</div>
       </div>
     {% endfor %}
-    <input class="btn btn-primary" type="submit" value="Изменить">
+    <input class="btn btn-primary" type="submit" value="Создать">
   </form>
 {% endblock %}
