@@ -15,25 +15,25 @@ class MainView(View):
         return render(request, 'main.html')
 
 
-class GetUsersView(View):
+class UsersIndexView(View):
     def get(self, request, *args, **kwargs):
         users = TaskUser.objects.all()
         context = {'users': users}
-        return render(request, 'users.html', context)
+        return render(request, 'users_index.html', context)
 
 
-class CreateUserView(CreateView):
+class UserCreateView(CreateView):
     form_class = CreationForm
-    template_name = 'create.html'
+    template_name = 'user_create.html'
 
     def get_success_url(self):
         messages.success(self.request, 'Пользователь успешно зарегистрирован')
         return reverse_lazy('login')
 
 
-class UpdateUserView(CustomLoginRequiredMixin, UpdateView):
+class UserUpdateView(CustomLoginRequiredMixin, UpdateView):
     form_class = UpdatingForm
-    template_name = 'update.html'
+    template_name = 'user_update.html'
     model = TaskUser
     success_url = reverse_lazy('get_users')
 
@@ -50,9 +50,9 @@ class UpdateUserView(CustomLoginRequiredMixin, UpdateView):
         return reverse_lazy('get_users')
 
 
-class DeleteUserView(CustomLoginRequiredMixin, DeleteView):
+class UserDeleteView(CustomLoginRequiredMixin, DeleteView):
     model = TaskUser
-    template_name = 'delete.html'
+    template_name = 'user_delete.html'
 
     def get_success_url(self):
         messages.success(self.request, 'Пользователь успешно удалён')
@@ -80,8 +80,4 @@ class LogoutUserView(LogoutView):
 
 
 class LabelView(View):
-    pass
-
-
-class TaskView(View):
     pass

@@ -15,17 +15,17 @@ class StatusView(View):
     def get(self, request, *args, **kwargs):
         statuses = Status.objects.all()
         context = {'statuses': statuses}
-        return render(request, 'statuses.html', context)
+        return render(request, 'statuses_index.html', context)
 
 
 class StatusCreateView(CreateView):
     model = Status
     form_class = CreateStatus
-    template_name = 'create_status.html'
+    template_name = 'status_create.html'
 
     def get_success_url(self):
         messages.success(self.request, 'Статус успешно создан')
-        return reverse_lazy('get_statuses')
+        return reverse_lazy('statuses_index')
 
 
 class StatusUpdateView(LoginRequiredMixin, View):
@@ -34,7 +34,7 @@ class StatusUpdateView(LoginRequiredMixin, View):
         status_id = kwargs.get('pk')
         status = Status.objects.get(id=status_id)
         form = UpdateStatus(instance=status)
-        return render(request, 'update_status.html', {'form': form, 'status': status})
+        return render(request, 'status_update.html', {'form': form, 'status': status})
 
     def post(self, request, *args, **kwargs):
         status_id = kwargs.get('pk')
@@ -43,16 +43,15 @@ class StatusUpdateView(LoginRequiredMixin, View):
         if form.is_valid():
             form.save()
             messages.success(self.request, 'Статус успешно изменен')
-            return redirect('get_statuses')
+            return redirect('statuses_index')
         else:
-            return render(request, 'update_status.html', {'form': form, 'status': status})
+            return render(request, 'status_update.html', {'form': form, 'status': status})
 
 
 class StatusDeleteView(LoginRequiredMixin, DeleteView):
     model = Status
-    template_name = 'delete_status.html'
+    template_name = 'status_delete.html'
 
     def get_success_url(self):
         messages.success(self.request, 'Статус успешно удалён')
-        return reverse_lazy('get_statuses')
-
+        return reverse_lazy('statuses_index')

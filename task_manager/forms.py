@@ -55,7 +55,7 @@ class CreationForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = TaskUser
         fields = fields
-        user_credentials_widgets = user_credentials_widgets
+        widgets = user_credentials_widgets
 
 
 class UpdatingForm(UserChangeForm):
@@ -75,7 +75,7 @@ class UpdatingForm(UserChangeForm):
     class Meta(UserChangeForm.Meta):
         model = TaskUser
         fields = fields
-        user_credentials_widgets = user_credentials_widgets
+        widgets = user_credentials_widgets
 
 
 class LoginForm(AuthenticationForm):

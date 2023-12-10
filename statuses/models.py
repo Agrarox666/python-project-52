@@ -1,8 +1,5 @@
 from django.db import models
-from django.db.models import DateTimeField, CharField, OneToOneField
-from django.forms import TextInput
-
-from task_manager.models import TaskUser
+from django.db.models import DateTimeField, CharField
 
 
 # Create your models here.
