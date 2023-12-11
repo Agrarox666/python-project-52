@@ -1,5 +1,7 @@
 from django.contrib.auth.models import User
 from django.db import models
+
+from labels.models import Label
 from statuses.models import Status
 
 
@@ -17,6 +19,8 @@ class Task(models.Model):
                                on_delete=models.CASCADE,
                                related_name='task_status',
                                default=None)
+    labels = models.ManyToManyField(Label)
     name = models.CharField(max_length=150, unique=False)
     description = models.TextField(default=None)
     created_at = models.DateTimeField(auto_now_add=True)
+

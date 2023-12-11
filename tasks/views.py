@@ -18,7 +18,7 @@ class TaskView(View):
         return render(request, 'tasks_index.html', {'tasks': tasks})
 
 
-class TaskCreateView(CreateView, LoginRequiredMixin):
+class TaskCreateView(LoginRequiredMixin, CreateView):
     model = Task
     form_class = TaskForm
     template_name = 'task_create.html'
@@ -32,15 +32,16 @@ class TaskCreateView(CreateView, LoginRequiredMixin):
         return super().form_valid(form)
 
 
-class TaskShowView(View, LoginRequiredMixin):
+class TaskShowView(LoginRequiredMixin, View):
 
     def get(self, request, *args, **kwargs):
         task_id = kwargs.get('pk')
         task = Task.objects.get(id=task_id)
-        return render(request, 'task_show.html', {'task': task})
+        labels = task.labels.all()
+        return render(request, 'task_show.html', {'task': task, 'labels': labels})
 
 
-class TaskUpdateView(View, LoginRequiredMixin):
+class TaskUpdateView(LoginRequiredMixin, View):
 
     def get(self, request, *args, **kwargs):
         task_id = kwargs.get('pk')

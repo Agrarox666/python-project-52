@@ -1,4 +1,4 @@
-from django.forms import ModelForm, TextInput, Textarea, Select
+from django.forms import ModelForm, TextInput, Textarea, Select, SelectMultiple
 
 from tasks.models import Task
 
@@ -6,7 +6,7 @@ from tasks.models import Task
 class TaskForm(ModelForm):
     class Meta:
         model = Task
-        fields = ['name', 'description', 'status', 'executor']
+        fields = ['name', 'description', 'status', 'executor', 'labels']
         widgets = {
             'name': TextInput(attrs={
                 'placeholder': 'Имя',
@@ -24,4 +24,7 @@ class TaskForm(ModelForm):
             'executor': Select(attrs={
                 'class': 'form-select',
             }),
+            'labels': SelectMultiple(attrs={
+                'class': 'form-select',
+            })
         }

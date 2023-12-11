@@ -18,7 +18,7 @@ class StatusView(View):
         return render(request, 'statuses_index.html', context)
 
 
-class StatusCreateView(CreateView):
+class StatusCreateView(LoginRequiredMixin, CreateView):
     model = Status
     form_class = CreateStatus
     template_name = 'status_create.html'

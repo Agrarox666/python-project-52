@@ -14,5 +14,5 @@ urlpatterns = [
     path('logout/', views.LogoutUserView.as_view(), name='logout'),
     path('statuses/', include('statuses.urls')),
     path('tasks/', include('tasks.urls')),
-    path('labels/', views.LabelView.as_view(), name='labels_index'),
+    path('labels/', include('labels.urls')),
 ]
