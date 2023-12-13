@@ -1,5 +1,7 @@
 import os
 from pathlib import Path
+
+import dj_database_url
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -17,12 +19,11 @@ USE_TZ = True
 STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-ALLOWED_HOSTS = ['webserver', '127.0.0.1',]
+ALLOWED_HOSTS = ['webserver', '127.0.0.1', ]
 
 RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
 if RENDER_EXTERNAL_HOSTNAME:
     ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
-
 
 LOGIN_REDIRECT_URL = 'main'
 LOGIN_URL = 'login'
@@ -39,7 +40,7 @@ INSTALLED_APPS = [
     'statuses',
     'tasks',
     'labels',
-    'django_filters'
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -51,6 +52,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'rollbar.contrib.django.middleware.RollbarNotifierMiddleware',
 ]
 
 TEMPLATES = [
@@ -69,12 +71,19 @@ TEMPLATES = [
     },
 ]
 
-DATABASES = {
-    'default': {
+db = dict()
+db['default'] = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'users_data_base',
-    }
 }
+db['product'] = {
+    dj_database_url.parse(os.environ.get("DATABASE_URL"))
+}
+
+if DEBUG:
+    DATABASES = {'default': db['default']}
+else:
+    DATABASES = {'default': db['product']}
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -87,3 +96,10 @@ AUTH_PASSWORD_VALIDATORS = [
         }
     },
 ]
+
+ROLLBAR = {
+    'access_token': 'd29399070a9b4c71aa80ddf697c287a7',
+    'environment': 'development' if DEBUG else 'production',
+    'code_version': '1.0',
+    'root': BASE_DIR,
+}

@@ -1,4 +1,5 @@
 from django.contrib.auth.views import LoginView, LogoutView
+from django.http import HttpResponse
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import View
@@ -7,6 +8,12 @@ from task_manager.decorators import CustomLoginRequiredMixin
 from task_manager.forms import CreationForm, LoginForm, UpdatingForm
 from task_manager.models import TaskUser
 from django.contrib import messages
+
+
+def index(request):
+    a = None
+    a.hello()  # Creating an error with an invalid line of code
+    return HttpResponse("Hello, world. You're at the pollapp index.")
 
 
 class MainView(View):
@@ -36,10 +43,6 @@ class UserUpdateView(CustomLoginRequiredMixin, UpdateView):
     template_name = 'user_update.html'
     model = TaskUser
     success_url = reverse_lazy('get_users')
-
-    '''@method_decorator(login_required)
-    def dispatch(self, request, *args, **kwargs):
-        return super(UpdateUserView, self).dispatch(kwargs)'''
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
