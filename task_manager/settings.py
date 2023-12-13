@@ -8,7 +8,8 @@ load_dotenv()
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.getenv('SECRET_KEY')
-DEBUG = 'RENDER' not in os.environ
+# DEBUG = 'RENDER' not in os.environ
+DEBUG = True
 ROOT_URLCONF = 'task_manager.urls'
 WSGI_APPLICATION = 'task_manager.wsgi.application'
 LANGUAGE_CODE = 'ru-RU'
