@@ -6,6 +6,7 @@ from django.views import View
 from django.views.generic import CreateView, DeleteView
 
 from tasks.decorators import CustomLoginRequiredMixin
+from tasks.filter import TaskFilter, CheckBox
 from tasks.forms import TaskForm
 from tasks.models import Task
 
@@ -14,8 +15,17 @@ from tasks.models import Task
 class TaskView(View):
 
     def get(self, request, *args, **kwargs):
-        tasks = Task.objects.all()
-        return render(request, 'tasks_index.html', {'tasks': tasks})
+        author = request.GET.get('self_tasks', False)
+        if author:
+            author_tasks = Task.objects.filter(author=request.user.id)
+            f = TaskFilter(request.GET, queryset=author_tasks)
+            c = CheckBox(request.GET)
+            return render(request, 'tasks_index.html', {'tasks': f.qs, 'filter': f, 'checkbox': c})
+
+        f = TaskFilter(request.GET, queryset=Task.objects.all())
+        c = CheckBox(request.GET)
+        print(c)
+        return render(request, 'tasks_index.html', {'tasks': f.qs, 'filter': f, 'checkbox': c})
 
 
 class TaskCreateView(LoginRequiredMixin, CreateView):

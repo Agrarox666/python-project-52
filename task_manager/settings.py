@@ -25,7 +25,6 @@ if RENDER_EXTERNAL_HOSTNAME:
 
 
 LOGIN_REDIRECT_URL = 'main'
-# AUTH_USER_MODEL = 'task_manager.TaskUser'
 LOGIN_URL = 'login'
 
 INSTALLED_APPS = [
@@ -40,6 +39,7 @@ INSTALLED_APPS = [
     'statuses',
     'tasks',
     'labels',
+    'django_filters'
 ]
 
 MIDDLEWARE = [

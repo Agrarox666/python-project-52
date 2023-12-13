@@ -3,7 +3,31 @@
 {% block content %}
   <h1 class="my-4">Задачи</h1>
   <a class="btn btn-primary mb-3" href="{% url 'task_create' %}" role="button">Создать задачу</a>
-  <table class="table table-striped">
+
+<div class="card mb-3">
+  <div class="card-body bg-light">
+    <form class="form-inline center" method="get">
+      {% for field in filter.form %}
+        <div class="mb-3">
+          <label class="form-label" for="{{ field.auto_id }}">{{field.label}}</label>
+          {{field}}
+        </div>
+      {% endfor %}
+      {% for field in checkbox %}
+        <div class="mb-3">
+          <div class="form-check">
+            {{ field }}
+            <label class="form-check-label" for="{{ field.auto_id }}">Только свои задачи</label>
+          </div>
+        </div>
+      {% endfor %}
+      <input class="btn btn-primary" type="submit" value="Показать">
+    </form>
+  </div>
+</div>
+
+
+<table class="table table-striped">
   <thead>
     <tr>
       <th>ID</th>
