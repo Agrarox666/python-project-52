@@ -71,19 +71,13 @@ TEMPLATES = [
     },
 ]
 
-db = dict()
-db['default'] = {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'users_data_base',
-}
-db['product'] = {
-    dj_database_url.parse(os.environ.get("DATABASE_URL"))
-}
+DATABASES = {
+    'default': dj_database_url.config(
+        default='postgresql://postgres:postgres@localhost:5432/mysite',
+        conn_max_age=600
+    )
 
-if DEBUG:
-    DATABASES = {'default': db['default']}
-else:
-    DATABASES = {'default': db['product']}
+}
 
 AUTH_PASSWORD_VALIDATORS = [
     {
