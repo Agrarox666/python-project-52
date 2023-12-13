@@ -52,7 +52,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'rollbar.contrib.django.middleware.RollbarNotifierMiddleware',
 ]
 
 TEMPLATES = [
@@ -90,10 +89,3 @@ AUTH_PASSWORD_VALIDATORS = [
         }
     },
 ]
-
-ROLLBAR = {
-    'access_token': 'd29399070a9b4c71aa80ddf697c287a7',
-    'environment': 'development' if DEBUG else 'production',
-    'code_version': '1.0',
-    'root': BASE_DIR,
-}
