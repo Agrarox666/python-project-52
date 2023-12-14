@@ -1,5 +1,5 @@
 install:
-	./build.sh
+	sh ./build.sh
 
 lint:
 	poetry run flake8
