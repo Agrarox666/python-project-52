@@ -71,9 +71,18 @@ TEMPLATES = [
     },
 ]
 
-DATABASES = {
-    'default': dj_database_url.parse(os.getenv('DATABASE_URL'))
-}
+DEVELOPMENT_MODE = os.getenv("DEVELOPMENT_MODE")
+if DEVELOPMENT_MODE:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": os.path.join(BASE_DIR, "users_data_base"),
+        }
+    }
+else:
+    DATABASES = {
+        "default": dj_database_url.parse(os.environ.get("DATABASE_URL")),
+    }
 
 AUTH_PASSWORD_VALIDATORS = [
     {

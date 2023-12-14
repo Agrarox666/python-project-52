@@ -1,7 +1,5 @@
 install:
-	poetry install
-	python manage.py makemigrations
-	python manage.py migrate
+	./build.sh
 
 lint:
 	poetry run flake8
