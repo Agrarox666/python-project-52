@@ -50,7 +50,7 @@ class UserUpdateView(CustomLoginRequiredMixin, UpdateView):
 
     def get_success_url(self):
         messages.success(self.request, 'Пользователь успешно изменен')
-        return reverse_lazy('get_users')
+        return reverse_lazy('users_index')
 
 
 class UserDeleteView(CustomLoginRequiredMixin, DeleteView):
@@ -59,7 +59,7 @@ class UserDeleteView(CustomLoginRequiredMixin, DeleteView):
 
     def get_success_url(self):
         messages.success(self.request, 'Пользователь успешно удалён')
-        return reverse_lazy('get_users')
+        return reverse_lazy('users_index')
 
 
 class LoginUserView(LoginView):
