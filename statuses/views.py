@@ -5,6 +5,7 @@ from django.urls import reverse_lazy
 from django.views import View
 from django.views.generic import CreateView, DeleteView
 
+from statuses.decorators import CustomLoginRequiredMixin
 from statuses.forms import CreateStatus, UpdateStatus
 from statuses.models import Status
 
@@ -48,7 +49,7 @@ class StatusUpdateView(LoginRequiredMixin, View):
             return render(request, 'status_update.html', {'form': form, 'status': status})
 
 
-class StatusDeleteView(LoginRequiredMixin, DeleteView):
+class StatusDeleteView(CustomLoginRequiredMixin, DeleteView):
     model = Status
     template_name = 'status_delete.html'
 

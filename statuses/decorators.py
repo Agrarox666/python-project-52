@@ -4,6 +4,8 @@ from django.shortcuts import redirect
 from django.utils.decorators import method_decorator
 
 from labels.models import Label
+from statuses.models import Status
+from tasks.models import Task
 
 
 def login_required(fn):
@@ -14,15 +16,15 @@ def login_required(fn):
                              extra_tags='danger')
             return redirect("login")
         else:
-            label_id = kwargs['pk']
-            label = Label.objects.get(id=label_id)
-            tasks = label.task_set.all()
+            status_id = kwargs['pk']
+            tasks = Task.objects.filter(status=status_id)
+
             perm = list(tasks) == []
             if not perm:
                 messages.warning(request,
-                                 message="Невозможно удалить метку, потому что она используется",  # noqa: E501
+                                 message="Невозможно удалить статус, потому что он используется",  # noqa: E501
                                  extra_tags='danger')
-                return redirect('labels_index')
+                return redirect('statuses_index')
             else:
                 return fn(request, *args, **kwargs)
 
@@ -30,7 +32,7 @@ def login_required(fn):
 
 
 class CustomLoginRequiredMixin(LoginRequiredMixin):
-    """Custom mixin for warning message if the user wants to delete a bounded label."""
+    """Custom mixin for warning message if the user wants to delete a bounded status."""
 
     @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
