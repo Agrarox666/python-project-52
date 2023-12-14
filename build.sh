@@ -2,6 +2,6 @@
 
 set -o errexit
 
-poetry install && PGPASSWORD=$PGPASSWORD psql -h dpg-clst94tcm5oc73bbmu90-a.oregon-postgres.render.com -U test_manager_db_user test_manager_db
+poetry install
 python3 manage.py makemigrations
 python3 manage.py migrate
