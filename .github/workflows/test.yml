@@ -10,6 +10,8 @@ jobs:
 
     - name: install dependencies
       run: | 
+        poetry install
+        poetry build
         make install
 
     - name: Run linter
