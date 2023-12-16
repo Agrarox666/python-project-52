@@ -4,6 +4,7 @@ from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import View
 from django.views.generic import CreateView, DeleteView
+from django.utils.translation import gettext as _
 
 from statuses.decorators import CustomLoginRequiredMixin
 from statuses.forms import CreateStatus, UpdateStatus
@@ -25,7 +26,7 @@ class StatusCreateView(LoginRequiredMixin, CreateView):
     template_name = 'status_create.html'
 
     def get_success_url(self):
-        messages.success(self.request, 'Статус успешно создан')
+        messages.success(self.request, _('Status created successfully'))
         return reverse_lazy('statuses_index')
 
 
@@ -43,7 +44,7 @@ class StatusUpdateView(LoginRequiredMixin, View):
         form = UpdateStatus(request.POST, instance=status)
         if form.is_valid():
             form.save()
-            messages.success(self.request, 'Статус успешно изменен')
+            messages.success(self.request, _('Status changed successfully'))
             return redirect('statuses_index')
         else:
             return render(request, 'status_update.html', {'form': form, 'status': status})
@@ -54,5 +55,5 @@ class StatusDeleteView(CustomLoginRequiredMixin, DeleteView):
     template_name = 'status_delete.html'
 
     def get_success_url(self):
-        messages.success(self.request, 'Статус успешно удалён')
+        messages.success(self.request, _('Status removed successfully'))
         return reverse_lazy('statuses_index')

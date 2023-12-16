@@ -1,5 +1,5 @@
 from django.forms import ModelForm, TextInput, Textarea, Select, SelectMultiple
-
+from django.utils.translation import gettext_lazy as _
 from tasks.models import Task
 
 
@@ -9,11 +9,11 @@ class TaskForm(ModelForm):
         fields = ['name', 'description', 'status', 'executor', 'labels']
         widgets = {
             'name': TextInput(attrs={
-                'placeholder': 'Имя',
+                'placeholder': _('Name'),
                 'class': 'form-control',
             }),
             'description': Textarea(attrs={
-                'placeholder': 'Описание',
+                'placeholder': _('Description'),
                 'class': 'form-control',
                 'cols': 40,
                 'rows': 10,

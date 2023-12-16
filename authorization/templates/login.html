@@ -1,7 +1,8 @@
 {% extends "main.html" %}
+{% load i18n %}
 
 {% block content %}
-  <h1 class="my-4">Вход</h1>
+  <h1 class="my-4">{% trans 'Log in' %}</h1>
   <div class="text-danger">
       {{ form.non_field_errors }}
   </div>
@@ -15,6 +16,6 @@
         <div class="form-text">{{ field.help_text }}</div>
       </div>
     {% endfor %}
-    <input class="btn btn-primary" type="submit" value="Войти">
+    <input class="btn btn-primary" type="submit" value="{% trans 'Log in' %}">
   </form>
 {% endblock %}

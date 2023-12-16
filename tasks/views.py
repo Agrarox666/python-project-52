@@ -4,6 +4,7 @@ from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import View
 from django.views.generic import CreateView, DeleteView
+from django.utils.translation import gettext as _
 
 from tasks.decorators import CustomLoginRequiredMixin
 from tasks.filter import TaskFilter, CheckBox
@@ -24,7 +25,6 @@ class TaskView(View):
 
         f = TaskFilter(request.GET, queryset=Task.objects.all())
         c = CheckBox(request.GET)
-        print(c)
         return render(request, 'tasks_index.html', {'tasks': f.qs, 'filter': f, 'checkbox': c})
 
 
@@ -34,7 +34,7 @@ class TaskCreateView(LoginRequiredMixin, CreateView):
     template_name = 'task_create.html'
 
     def get_success_url(self):
-        messages.success(self.request, 'Задача успешно создана')
+        messages.success(self.request, _('Task created successfully'))
         return reverse_lazy('tasks_index')
 
     def form_valid(self, form):
@@ -65,7 +65,7 @@ class TaskUpdateView(LoginRequiredMixin, View):
         form = TaskForm(request.POST, instance=task)
         if form.is_valid():
             form.save()
-            messages.success(self.request, 'Задача успешно изменена')
+            messages.success(self.request, _('Task changed successfully'))
             return redirect('tasks_index')
         else:
             return render(request, 'task_update.html', {'form': form, 'task': task})
@@ -76,5 +76,5 @@ class TaskDeleteView(CustomLoginRequiredMixin, DeleteView):
     template_name = 'task_delete.html'
 
     def get_success_url(self):
-        messages.success(self.request, 'Задача успешно удалена')
+        messages.success(self.request, _('Task removed successfully'))
         return reverse_lazy('tasks_index')

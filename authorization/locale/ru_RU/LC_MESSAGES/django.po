@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-12-16 16:11+0500\n"
+"POT-Creation-Date: 2023-12-16 18:58+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,34 +17,22 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: templates/main.html:13
-msgid "Task Manager"
-msgstr "Менеджер задач"
+#: forms.py:11
+msgid "Username"
+msgstr "Имя пользователя"
 
-#: templates/main.html:20
-msgid "Users"
-msgstr "Пользователи"
+#: forms.py:22
+msgid "Password"
+msgstr "Пароль"
 
-#: templates/main.html:24
+#: templates/login.html:5 templates/login.html:19
 msgid "Log in"
 msgstr "Вход"
 
-#: templates/main.html:27
-msgid "Sign Up"
-msgstr "Регистрация"
+#: views.py:17
+msgid "You are logged in"
+msgstr "Вы успешно вошли"
 
-#: templates/main.html:32
-msgid "Statuses"
-msgstr "Статусы"
-
-#: templates/main.html:35
-msgid "Labels"
-msgstr "Метки"
-
-#: templates/main.html:38
-msgid "Tasks"
-msgstr "Задачи"
-
-#: templates/main.html:41
-msgid "Log out"
-msgstr "Выход"
+#: views.py:24
+msgid "You are logged out"
+msgstr "Вы вышли"

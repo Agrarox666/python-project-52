@@ -3,9 +3,10 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import View
 from django.views.generic import CreateView, UpdateView, DeleteView
+from django.utils.translation import gettext as _
 
-from task_manager.decorators import CustomLoginRequiredMixin
-from task_manager.forms import CreationForm, UpdatingForm
+from users.decorators import CustomLoginRequiredMixin
+from users.forms import CreationForm, UpdatingForm
 from users.models import TaskUser
 
 
@@ -21,7 +22,7 @@ class UserCreateView(CreateView):
     template_name = 'user_create.html'
 
     def get_success_url(self):
-        messages.success(self.request, 'Пользователь успешно зарегистрирован')
+        messages.success(self.request, _('User created successfully'))
         return reverse_lazy('login')
 
 
@@ -36,7 +37,7 @@ class UserUpdateView(CustomLoginRequiredMixin, UpdateView):
         return context
 
     def get_success_url(self):
-        messages.success(self.request, 'Пользователь успешно изменен')
+        messages.success(self.request, _('User changed successfully'))
         return reverse_lazy('users_index')
 
 
@@ -45,5 +46,5 @@ class UserDeleteView(CustomLoginRequiredMixin, DeleteView):
     template_name = 'user_delete.html'
 
     def get_success_url(self):
-        messages.success(self.request, 'Пользователь успешно удалён')
+        messages.success(self.request, _('User removed successfully'))
         return reverse_lazy('users_index')

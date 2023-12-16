@@ -1,4 +1,5 @@
 from django.forms import ModelForm, TextInput
+from django.utils.translation import gettext_lazy as _
 
 from statuses.models import Status
 
@@ -9,7 +10,7 @@ class CreateStatus(ModelForm):
         fields = ['name']
         widgets = {
             'name': TextInput(attrs={
-                'placeholder': 'Имя',
+                'placeholder': _('Name'),
                 'class': 'form-control',
             })
         }
@@ -21,7 +22,7 @@ class UpdateStatus(ModelForm):
         fields = ['name']
         widgets = {
             'name': TextInput(attrs={
-                'placeholder': 'Имя',
+                'placeholder': _('Name'),
                 'class': 'form-control',
             })
         }

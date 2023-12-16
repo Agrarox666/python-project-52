@@ -2,6 +2,7 @@ from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect
 from django.utils.decorators import method_decorator
+from django.utils.translation import gettext as _
 
 from tasks.models import Task
 
@@ -10,7 +11,7 @@ def login_required(fn):
     def wrapper(request, *args, **kwargs):
         if request.user.is_anonymous:
             messages.warning(request,
-                             message="Вы не авторизованы! Пожалуйста, выполните вход",  # noqa: E501
+                             message=_("You are not authorized! Please log in"),  # noqa: E501
                              extra_tags='danger')
             return redirect("login")
         else:
@@ -20,7 +21,7 @@ def login_required(fn):
             perm = list(tasks) == []
             if not perm:
                 messages.warning(request,
-                                 message="Невозможно удалить статус, потому что он используется",  # noqa: E501
+                                 message=_("Cannot remove status because it is in use"),  # noqa: E501
                                  extra_tags='danger')
                 return redirect('statuses_index')
             else:

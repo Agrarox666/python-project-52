@@ -1,8 +1,9 @@
 {% extends "main.html" %}
+{% load i18n %}
 
 {% block content %}
-  <h1 class="my-4">Задачи</h1>
-  <a class="btn btn-primary mb-3" href="{% url 'task_create' %}" role="button">Создать задачу</a>
+  <h1 class="my-4">{% trans 'Tasks' %}</h1>
+  <a class="btn btn-primary mb-3" href="{% url 'task_create' %}" role="button">{% trans 'Create task' %}</a>
 
 <div class="card mb-3">
   <div class="card-body bg-light">
@@ -17,11 +18,11 @@
         <div class="mb-3">
           <div class="form-check">
             {{ field }}
-            <label class="form-check-label" for="{{ field.auto_id }}">Только свои задачи</label>
+            <label class="form-check-label" for="{{ field.auto_id }}">{% trans 'Only my tasks' %}</label>
           </div>
         </div>
       {% endfor %}
-      <input class="btn btn-primary" type="submit" value="Показать">
+      <input class="btn btn-primary" type="submit" value="{% trans 'Show' %}">
     </form>
   </div>
 </div>
@@ -31,11 +32,11 @@
   <thead>
     <tr>
       <th>ID</th>
-      <th>Имя</th>
-      <th>Статус</th>
-      <th>Автор</th>
-      <th>Исполнитель</th>
-      <th>Дата создания</th>
+      <th>{% trans 'Name' %}</th>
+      <th>{% trans 'Status' %}</th>
+      <th>{% trans 'Author' %}</th>
+      <th>{% trans 'Executor' %}</th>
+      <th>{% trans 'Date of creation' %}</th>
     </tr>
   </thead>
   <tbody>

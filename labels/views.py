@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import View
 from django.views.generic import CreateView, DeleteView
-
+from django.utils.translation import gettext as _
 from labels.decorators import CustomLoginRequiredMixin
 from labels.forms import CreateLabel, UpdateLabel
 from labels.models import Label
@@ -24,7 +24,7 @@ class LabelCreateView(LoginRequiredMixin, CreateView):
     template_name = 'label_create.html'
 
     def get_success_url(self):
-        messages.success(self.request, 'Метка успешно создана')
+        messages.success(self.request, _('Label created successfully'))
         return reverse_lazy('labels_index')
 
 
@@ -41,7 +41,7 @@ class LabelUpdateView(LoginRequiredMixin, View):
         form = UpdateLabel(request.POST, instance=label)
         if form.is_valid():
             form.save()
-            messages.success(self.request, 'Метка успешно изменена')
+            messages.success(self.request, _('Label changed successfully'))
             return redirect('labels_index')
         else:
             return render(request, 'label_update.html', {'form': form, 'label': label})
@@ -52,5 +52,5 @@ class LabelDeleteView(CustomLoginRequiredMixin, DeleteView):
     template_name = 'label_delete.html'
 
     def get_success_url(self):
-        messages.success(self.request, 'Метка успешно удалена')
+        messages.success(self.request, _('Label removed successfully'))
         return reverse_lazy('labels_index')

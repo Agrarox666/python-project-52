@@ -1,5 +1,6 @@
 import django_filters
 from django import forms
+from django.utils.translation import gettext_lazy as _
 
 from tasks.models import Task
 
@@ -7,19 +8,19 @@ from tasks.models import Task
 class TaskFilter(django_filters.FilterSet):
     status = django_filters.AllValuesFilter(
         field_name='status__name',
-        label='Статус',
+        label=_('Status'),
         widget=forms.Select(attrs={
             'class': 'form-select is-valid'
         }))
     executor = django_filters.AllValuesFilter(
         field_name='executor__username',
-        label='Исполнитель',
+        label=_('Executor'),
         widget=forms.Select(attrs={
             'class': 'form-select is-valid'
         }))
     labels = django_filters.AllValuesFilter(
         field_name='labels__name',
-        label='Метка',
+        label=_('Label'),
         widget=forms.Select(attrs={
             'class': 'form-select is-valid'
         }))
