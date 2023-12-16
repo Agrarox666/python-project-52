@@ -5,8 +5,8 @@
 
 ## Contents
 - **[Description](#description)**
-- **[Requirments](#requirments)**
-- **[Installation](#installation and runnining commands)**
+- **[Requirements](#requirements)**
+- **[Installation](#installation-and-running-commands)**
 - **[Routes](#routes)**
 
 ## Description
