@@ -1,6 +1,9 @@
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/Agrarox666/python-project-52/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/Agrarox666/python-project-52/actions)
 [![CI](https://github.com/Agrarox666/python-project-52/actions/workflows/test.yml/badge.svg)](https://github.com/Agrarox666/python-project-52/actions/workflows/test.yml)
+<a href="https://codeclimate.com/github/Agrarox666/python-project-52/maintainability"><img src="https://api.codeclimate.com/v1/badges/9e33a70c7d6da06aefdc/maintainability" /></a>
+<a href="https://codeclimate.com/github/Agrarox666/python-project-52/test_coverage"><img src="https://api.codeclimate.com/v1/badges/9e33a70c7d6da06aefdc/test_coverage" /></a>
+
 # Task Manager
 ### try it: https://task-manager-bwi4.onrender.com
 
