@@ -10,7 +10,7 @@
 - **[Routes](#routes)**
 
 ## Description
-##### Welcome to task manager repository. It is my 4th educational project for the [Hexlet](https://ru.hexlet.io/) learning platform. It provides simplified functionality for task scheduling systems. You can manage your tasks with statuses and labels, assign an executors and filter tasks by this parameters.
+#### Welcome to task manager repository. It is my 4th educational project for the [Hexlet](https://ru.hexlet.io/) learning platform. It provides simplified functionality for task scheduling systems. You can manage your tasks with statuses and labels, assign an executors and filter tasks by this parameters.
 
 ## Requirements
 - **Python >=3.10**
