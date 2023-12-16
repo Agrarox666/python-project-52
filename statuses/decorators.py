@@ -3,8 +3,6 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect
 from django.utils.decorators import method_decorator
 
-from labels.models import Label
-from statuses.models import Status
 from tasks.models import Task
 
 

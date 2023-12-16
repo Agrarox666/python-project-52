@@ -5,7 +5,7 @@ from django.contrib.auth.forms import (
     UsernameField)
 from django.forms import TextInput, PasswordInput, CharField
 
-from task_manager.models import TaskUser
+from users.models import TaskUser
 
 fields = ['first_name',
           'last_name',

@@ -17,7 +17,7 @@
       <tr>
         <td>{{ status.id }}</td>
         <td>{{ status.name }}</td>
-        <td>{{ user.created_at }}</td>
+        <td>{{ status.created_at }}</td>
         <td><a href="{% url 'status_update' status.id %}">Изменить</a></td>
         <br>
         <td><a href="{% url 'status_delete' status.id %}">Удалить</a></td>

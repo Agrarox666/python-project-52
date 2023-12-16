@@ -9,8 +9,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 load_dotenv()
 
 SECRET_KEY = os.getenv('SECRET_KEY')
-# DEBUG = 'RENDER' not in os.environ
-DEBUG = True
+DEBUG = 'RENDER' not in os.environ
+# DEBUG = True
 ROOT_URLCONF = 'task_manager.urls'
 WSGI_APPLICATION = 'task_manager.wsgi.application'
 LANGUAGE_CODE = 'ru-RU'
@@ -39,10 +39,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_bootstrap5',
     'task_manager',
+    'users',
     'statuses',
     'tasks',
     'labels',
     'django_filters',
+    'authorization',
 ]
 
 MIDDLEWARE = [
@@ -85,9 +87,7 @@ else:
         "default": dj_database_url.parse(os.environ.get("DATABASE_URL"), conn_max_age=600),
     }
 
-'''DATABASES = {
-    "default": dj_database_url.parse(os.environ.get("DATABASE_URL")),
-}'''
+
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
