@@ -10,7 +10,7 @@ class Task(models.Model):
     executor = models.ForeignKey(User,
                                  on_delete=models.SET_DEFAULT,
                                  related_name='task_executor',
-                                 default=None)
+                                 default=None,)
     author = models.ForeignKey(User,
                                on_delete=models.SET_DEFAULT,
                                related_name='task_author',

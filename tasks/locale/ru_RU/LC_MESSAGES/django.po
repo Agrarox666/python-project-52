@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-12-16 18:28+0500\n"
+"POT-Creation-Date: 2023-12-16 19:57+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,11 +25,13 @@ msgstr "Вы не авторизованы! Пожалуйста, выполни
 msgid "Only its author can delete a task"
 msgstr "Задачу может удалить только её автор"
 
-#: filter.py:11 templates/task_show.html:23 templates/tasks_index.html:36
+#: filter.py:11 forms.py:35 templates/task_show.html:23
+#: templates/tasks_index.html:36
 msgid "Status"
 msgstr "Статус"
 
-#: filter.py:17 templates/task_show.html:19 templates/tasks_index.html:38
+#: filter.py:17 forms.py:36 templates/task_show.html:19
+#: templates/tasks_index.html:38
 msgid "Executor"
 msgstr "Исполнитель"
 
@@ -37,13 +39,17 @@ msgstr "Исполнитель"
 msgid "Label"
 msgstr "Метка"
 
-#: forms.py:12 templates/tasks_index.html:35
+#: forms.py:13 forms.py:33 templates/tasks_index.html:35
 msgid "Name"
 msgstr "Имя"
 
-#: forms.py:16
+#: forms.py:17 forms.py:34
 msgid "Description"
 msgstr "Описание"
+
+#: forms.py:37 templates/task_show.html:32
+msgid "Labels"
+msgstr "Метки"
 
 #: templates/task_create.html:5 templates/tasks_index.html:6
 msgid "Create task"
@@ -65,6 +71,12 @@ msgstr "Вы уверены, что хотите удалить"
 msgid "Yes, delete"
 msgstr "Да, удалить"
 
+# msgid "Create task"
+# msgstr "Создать задачу"
+#: templates/task_show.html:5
+msgid "View task"
+msgstr "Просмотр задачи"
+
 #: templates/task_show.html:15 templates/tasks_index.html:37
 msgid "Author"
 msgstr "Автор"
@@ -72,10 +84,6 @@ msgstr "Автор"
 #: templates/task_show.html:27 templates/tasks_index.html:39
 msgid "Date of creation"
 msgstr "Дата создания"
-
-#: templates/task_show.html:32
-msgid "Labels"
-msgstr "Метки"
 
 #: templates/task_show.html:42 templates/task_update.html:16
 msgid "Change"
