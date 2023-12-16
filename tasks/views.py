@@ -2,11 +2,12 @@ from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
+from django.utils.decorators import method_decorator
 from django.views import View
 from django.views.generic import CreateView, DeleteView
 from django.utils.translation import gettext as _
 
-from tasks.decorators import CustomLoginRequiredMixin
+from tasks.decorators import login_required
 from tasks.filter import TaskFilter, CheckBox
 from tasks.forms import TaskForm
 from tasks.models import Task
@@ -71,10 +72,16 @@ class TaskUpdateView(LoginRequiredMixin, View):
             return render(request, 'task_update.html', {'form': form, 'task': task})
 
 
-class TaskDeleteView(CustomLoginRequiredMixin, DeleteView):
+class TaskDeleteView(LoginRequiredMixin, DeleteView):
     model = Task
     template_name = 'task_delete.html'
 
     def get_success_url(self):
         messages.success(self.request, _('Task removed successfully'))
         return reverse_lazy('tasks_index')
+
+    @method_decorator(login_required)
+    def dispatch(self, request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            return self.handle_no_permission()
+        return super().dispatch(request, *args, **kwargs)

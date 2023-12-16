@@ -2,10 +2,11 @@ from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
+from django.utils.decorators import method_decorator
 from django.views import View
 from django.views.generic import CreateView, DeleteView
 from django.utils.translation import gettext as _
-from labels.decorators import CustomLoginRequiredMixin
+from labels.decorators import login_required
 from labels.forms import CreateLabel, UpdateLabel
 from labels.models import Label
 
@@ -47,10 +48,16 @@ class LabelUpdateView(LoginRequiredMixin, View):
             return render(request, 'label_update.html', {'form': form, 'label': label})
 
 
-class LabelDeleteView(CustomLoginRequiredMixin, DeleteView):
+class LabelDeleteView(LoginRequiredMixin, DeleteView):
     model = Label
     template_name = 'label_delete.html'
 
     def get_success_url(self):
         messages.success(self.request, _('Label removed successfully'))
         return reverse_lazy('labels_index')
+
+    @method_decorator(login_required)
+    def dispatch(self, request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            return self.handle_no_permission()
+        return super().dispatch(request, *args, **kwargs)

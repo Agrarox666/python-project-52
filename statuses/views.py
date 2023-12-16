@@ -2,11 +2,12 @@ from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
+from django.utils.decorators import method_decorator
 from django.views import View
 from django.views.generic import CreateView, DeleteView
 from django.utils.translation import gettext as _
 
-from statuses.decorators import CustomLoginRequiredMixin
+from statuses.decorators import login_required
 from statuses.forms import CreateStatus, UpdateStatus
 from statuses.models import Status
 
@@ -50,10 +51,16 @@ class StatusUpdateView(LoginRequiredMixin, View):
             return render(request, 'status_update.html', {'form': form, 'status': status})
 
 
-class StatusDeleteView(CustomLoginRequiredMixin, DeleteView):
+class StatusDeleteView(LoginRequiredMixin, DeleteView):
     model = Status
     template_name = 'status_delete.html'
 
     def get_success_url(self):
         messages.success(self.request, _('Status removed successfully'))
         return reverse_lazy('statuses_index')
+
+    @method_decorator(login_required)
+    def dispatch(self, request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            return self.handle_no_permission()
+        return super().dispatch(request, *args, **kwargs)

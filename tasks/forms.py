@@ -1,4 +1,4 @@
-from django.forms import ModelForm, TextInput, Textarea, Select, SelectMultiple, CharField
+from django.forms import ModelForm, TextInput, Textarea, Select, SelectMultiple
 from django.utils.translation import gettext_lazy as _
 from tasks.models import Task
 

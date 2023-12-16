@@ -10,8 +10,6 @@ jobs:
 
     - name: install dependencies
       run: | 
-        pip install poetry
-        pip install django
         make install
 
     - name: Run linter
