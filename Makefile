@@ -5,11 +5,10 @@ lint:
 	poetry run flake8
 
 tests:
-	coverage run manage.py test
+	python manage.py test
 
 test-coverage:
-	coverage run manage.py test
-	coverage report
+	@poetry run coverage run --source='.' manage.py test && poetry run coverage xml
 
 PORT ?= 8000
 start:
