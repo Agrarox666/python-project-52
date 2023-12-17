@@ -8,9 +8,10 @@ from dotenv import load_dotenv
 BASE_DIR = Path(__file__).resolve().parent.parent
 load_dotenv()
 
+
 SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = 'RENDER' not in os.environ
-# DEBUG = True
+
 ROOT_URLCONF = 'task_manager.urls'
 WSGI_APPLICATION = 'task_manager.wsgi.application'
 LANGUAGE_CODE = 'ru-RU'
@@ -39,12 +40,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_bootstrap5',
     'task_manager',
-    'users',
-    'statuses',
-    'tasks',
-    'labels',
+    'task_manager.users',
+    'task_manager.statuses',
+    'task_manager.tasks',
+    'task_manager.labels',
     'django_filters',
-    'authorization',
+    'task_manager.authorization',
 ]
 
 MIDDLEWARE = [
@@ -100,10 +101,3 @@ AUTH_PASSWORD_VALIDATORS = [
         }
     },
 ]
-
-ROLLBAR = {
-    'access_token': os.getenv('ACCESS_TOKEN'),
-    'environment': 'development' if DEBUG else 'production',
-    'branch': 'main',
-    'root': os.getcwd(),
-}

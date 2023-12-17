@@ -8,14 +8,7 @@ classifiers = [
     "Programming Language :: Python :: 3.0",
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent"]
-packages = [
-    {include = "task_manager"},
-    {include = "authorization"},
-    {include = "labels"},
-    {include = "statuses"},
-    {include = "users"},
-    {include = "tasks"},
-]
+packages = [{include = "task_manager"}]
 
 [tool.poetry.dependencies]
 python = ">=3.8.1,<4.0"
@@ -30,6 +23,7 @@ coverage = "^7.3.3"
 django-coverage-plugin = "^3.1.0"
 requests = "^2.31.0"
 flake8 = "4.0.1"
+rollbar = "^1.0.0"
 
 
 [tool.poetry.dev-dependencies]
