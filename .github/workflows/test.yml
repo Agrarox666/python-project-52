@@ -19,7 +19,7 @@ jobs:
 
     - name: Install dependencies
       run: |
-        source .venv/bin/activate
+        source $VENV
         poetry install --no-interaction
         make install
         make build
