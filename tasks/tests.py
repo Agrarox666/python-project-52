@@ -22,7 +22,9 @@ class TaskTestCase(TestCase):
                      executor=user2,
                      status=status1,
                      description='Description of the deployment.')'''
-        task1 = Task(name='Deployment of 4th project', description='Description of the deployment.')
+        task1 = Task(
+            name='Deployment of 4th project',
+            description='Description of the deployment.')
         task1.author = user1
         task1.executor = user2
         task1.status = status1
