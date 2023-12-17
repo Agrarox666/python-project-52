@@ -8,11 +8,8 @@ from dotenv import load_dotenv
 BASE_DIR = Path(__file__).resolve().parent.parent
 load_dotenv()
 
-
 SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = 'RENDER' not in os.environ
-
-ROOT_URLCONF = 'task_manager.urls'
 WSGI_APPLICATION = 'task_manager.wsgi.application'
 LANGUAGE_CODE = 'ru-RU'
 TIME_ZONE = 'UTC'
@@ -59,6 +56,15 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'rollbar.contrib.django.middleware.RollbarNotifierMiddleware',
 ]
+
+ROOT_URLCONF = 'task_manager.urls'
+
+ROLLBAR = {
+    'access_token': os.getenv('ACCESS_TOKEN'),
+    'environment': 'development' if DEBUG else 'production',
+    'branch': 'main',
+    'root': os.getcwd(),
+}
 
 TEMPLATES = [
     {
