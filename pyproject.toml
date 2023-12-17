@@ -8,6 +8,7 @@ classifiers = [
     "Programming Language :: Python :: 3.0",
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent"]
+packages = [{include = "python-project-52"}]
 
 [tool.poetry.dependencies]
 python = ">=3.8.1,<4.0"
