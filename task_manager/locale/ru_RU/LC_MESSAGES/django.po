@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-12-16 16:11+0500\n"
+"POT-Creation-Date: 2023-12-17 22:51+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -48,3 +48,21 @@ msgstr "Задачи"
 #: templates/main.html:41
 msgid "Log out"
 msgstr "Выход"
+
+#: templates/main_page.html:9
+msgid "This is Task Manager"
+msgstr "Это менеджер задач"
+
+#: templates/main_page.html:10
+msgid ""
+"This is a task management application. It allows you to set tasks with tags, "
+"statuses, and assign authors and performers. To use you need to log in."
+msgstr "Это приложение для управления задачами. Оно позволяет ставить задачи с метками, статусами, назначать авторов и исполнителей. Чтобы пользоваться нужно авторизоваться."
+
+#: templates/main_page.html:12
+msgid "First time on the site? You can register:"
+msgstr "Первый раз на сайте? Можете зарегистрироваться"
+
+#: templates/main_page.html:14
+msgid "Registration"
+msgstr "Регистрация"
