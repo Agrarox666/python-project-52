@@ -20,13 +20,13 @@ jobs:
     - name: Install dependencies
       run: |
         poetry install --no-interaction
-        pip install -r requirements.txt
+        pip install -r srequirements.txt
         make build
 
     - name: Run linter
       run: make lint
     - name: Run tests
-      run: make test
+      run: make tests
     - name: Test & publish code coverage
       uses: paambaati/codeclimate-action@v3.2.0
       if: github.ref_name == 'main'
