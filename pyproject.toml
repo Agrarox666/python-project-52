@@ -4,12 +4,11 @@ version = "0.1.0"
 description = "Simple task manager (educational project)"
 authors = ["Igor Loskutov <omfi017@gmail.com>"]
 readme = "README.md"
-# packages = [{include = "task_manager"}]
 classifiers = [
     "Programming Language :: Python :: 3.0",
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent"]
-
+packages = [{include = "task_manager"}]
 
 [tool.poetry.dependencies]
 python = ">=3.8.1,<4.0"
