@@ -14,20 +14,22 @@
 - **[Routes](#routes)**
 
 ## Description
-#### Welcome to task manager repository. It is my 4th educational project for the [Hexlet](https://ru.hexlet.io/) learning platform. It provides simplified functionality for task scheduling systems. You can manage your tasks with statuses and labels, assign an executors and filter tasks by this parameters.
+#### Welcome to task manager repository. It is my 4th educational project for the [Hexlet](https://ru.hexlet.io/) learning platform. It provides simplified functionality for task scheduling systems. You can manage your tasks with statuses and labels, assign an executors and filter tasks by this parameters. There are 2 languages available in the project: english and russian (depends on your system language).
 
 ## Requirements
 - **Python >=3.10**
 - **Git**
 - **Poetry**
+- **Pip**
 
 ## Installation and running commands
 1. To clone the repo to your machine execute this command from your comamnd line:
 ``` shell
 git clone https://github.com/Agrarox666/python-project-52.git
 ```
-2. To install execute the command below:
+2. To install execute the commands below:
 ```shell
+pip install -r requirements.txt
 Make install
 ```
 3. To start the application
