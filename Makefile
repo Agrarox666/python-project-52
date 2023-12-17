@@ -8,7 +8,8 @@ tests:
 	python manage.py test
 
 test-coverage:
-	poetry run pytest --cov=hexlet_python_package --cov-report xml
+	coverage run manage.py test
+	coverage report
 
 PORT ?= 8000
 start:
