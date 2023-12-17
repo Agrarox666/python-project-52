@@ -5,7 +5,7 @@ lint:
 	poetry run flake8
 
 tests:
-	python manage.py test
+	coverage python manage.py test
 
 test-coverage:
 	coverage run manage.py test
