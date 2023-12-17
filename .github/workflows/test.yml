@@ -32,11 +32,8 @@ jobs:
         make install
         make tests
 
-    - name: Test & publish code coverage
-      uses: paambaati/codeclimate-action@v3.2.0
-      if: github.ref_name == 'main'
-      env:
-        CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+    - name: Django Coverage action
+      uses: actions/python-django-coverage-gitHub-action@0.9
       with:
-        coverageCommand: make test-coverage
-        debug: true
+        django-app: 'task_manager'
+        minimum-coverage: '50'
