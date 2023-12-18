@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-12-17 22:43+0500\n"
+"POT-Creation-Date: 2023-12-18 21:44+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,22 +17,22 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: authorization/forms.py:11
+#: forms.py:11
 msgid "Username"
 msgstr "Имя пользователя"
 
-#: authorization/forms.py:22
+#: forms.py:22
 msgid "Password"
 msgstr "Пароль"
 
-#: authorization/templates/login.html:5 authorization/templates/login.html:19
+#: templates/login.html:5 templates/login.html:19
 msgid "Log in"
 msgstr "Вход"
 
-#: authorization/views.py:17
+#: views.py:17
 msgid "You are logged in"
 msgstr "Вы успешно вошли"
 
-#: authorization/views.py:24
+#: views.py:24
 msgid "You are logged out"
 msgstr "Вы вышли"
