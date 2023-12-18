@@ -14,6 +14,9 @@ class CreateStatus(ModelForm):
                 'class': 'form-control',
             })
         }
+        labels = {
+            'name': _('Name'),
+        }
 
 
 class UpdateStatus(ModelForm):
@@ -25,4 +28,7 @@ class UpdateStatus(ModelForm):
                 'placeholder': _('Name'),
                 'class': 'form-control',
             })
+        }
+        labels = {
+            'name': _('Name'),
         }

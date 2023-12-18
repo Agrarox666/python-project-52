@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-12-17 22:43+0500\n"
+"POT-Creation-Date: 2023-12-18 22:13+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,69 +17,67 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: statuses/decorators.py:12
+#: decorators.py:12
 msgid "You are not authorized! Please log in"
 msgstr "Вы не авторизованы! Пожалуйста, выполните вход"
 
-#: statuses/decorators.py:22
+#: decorators.py:22
 msgid "Cannot remove status because it is in use"
 msgstr "Невозможно удалить статус, потому что он используется"
 
-#: statuses/forms.py:13 statuses/forms.py:25
-#: statuses/templates/statuses_index.html:11
+#: forms.py:13 forms.py:18 forms.py:28 forms.py:33
+#: templates/statuses_index.html:11
 msgid "Name"
 msgstr "Имя"
 
-#: statuses/templates/status_create.html:5
-#: statuses/templates/statuses_index.html:6
+#: templates/status_create.html:5 templates/statuses_index.html:6
 msgid "Create status"
 msgstr "Создать статус"
 
-#: statuses/templates/status_create.html:16
+#: templates/status_create.html:16
 msgid "Create"
 msgstr "Создать"
 
-#: statuses/templates/status_delete.html:5
+#: templates/status_delete.html:5
 msgid "Status removing"
 msgstr "Удаление статуса"
 
-#: statuses/templates/status_delete.html:6
+#: templates/status_delete.html:6
 msgid "Are you sure you want to delete"
 msgstr "Вы уверены, что хотите удалить"
 
-#: statuses/templates/status_delete.html:10
+#: templates/status_delete.html:10
 msgid "Yes, delete"
-msgstr ""
+msgstr "Да, удалить"
 
-#: statuses/templates/status_update.html:5
+#: templates/status_update.html:5
 msgid "Status change"
 msgstr "Изменение статуса"
 
-#: statuses/templates/status_update.html:16
-#: statuses/templates/statuses_index.html:22
+#: templates/status_update.html:16 templates/statuses_index.html:22
 msgid "Change"
 msgstr "Изменить"
 
-#: statuses/templates/statuses_index.html:5
+#: templates/statuses_index.html:5
 msgid "Statuses"
 msgstr "Статусы"
 
-#: statuses/templates/statuses_index.html:12
+#: templates/statuses_index.html:12
 msgid "Date of creation"
 msgstr "Дата создания"
 
-#: statuses/templates/statuses_index.html:24
+#: templates/statuses_index.html:24
 msgid "Delete"
 msgstr "Удалить"
 
-#: statuses/views.py:30
+#: views.py:30
 msgid "Status created successfully"
 msgstr "Статус успешно создан"
 
-#: statuses/views.py:48
+#: views.py:48
 msgid "Status changed successfully"
 msgstr "Статус успешно изменен"
 
-#: statuses/views.py:59
+#: views.py:59
 msgid "Status removed successfully"
 msgstr "Статус успешно удален"
