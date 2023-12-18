@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-12-17 22:43+0500\n"
+"POT-Creation-Date: 2023-12-18 22:22+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,66 +17,67 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: labels/decorators.py:12
+#: decorators.py:12
 msgid "You are not authorized! Please log in"
 msgstr "Вы не авторизованы! Пожалуйста, выполните вход"
 
-#: labels/decorators.py:22
+#: decorators.py:22
 msgid "Cannot remove label because it is in use"
 msgstr "Невозможно удалить метку, потому что она используется"
 
-#: labels/forms.py:12 labels/forms.py:24 labels/templates/labels_index.html:11
+#: forms.py:12 forms.py:17 forms.py:27 forms.py:32
+#: templates/labels_index.html:11
 msgid "Name"
 msgstr "Имя"
 
-#: labels/templates/label_create.html:5 labels/templates/labels_index.html:6
+#: templates/label_create.html:5 templates/labels_index.html:6
 msgid "Create label"
 msgstr "Создать метку"
 
-#: labels/templates/label_create.html:16
+#: templates/label_create.html:16
 msgid "Create"
 msgstr "Создать"
 
-#: labels/templates/label_delete.html:5
+#: templates/label_delete.html:5
 msgid "Label removing"
 msgstr "Удаление метки"
 
-#: labels/templates/label_delete.html:6
+#: templates/label_delete.html:6
 msgid "Are you sure you want to delete"
 msgstr "Вы уверены, что хотите удалить"
 
-#: labels/templates/label_delete.html:10
+#: templates/label_delete.html:10
 msgid "Yes, delete"
 msgstr "Да, удалить"
 
-#: labels/templates/label_update.html:5
+#: templates/label_update.html:5
 msgid "Label change"
 msgstr "Изменение метки"
 
-#: labels/templates/label_update.html:16 labels/templates/labels_index.html:21
+#: templates/label_update.html:16 templates/labels_index.html:21
 msgid "Change"
 msgstr "Изменить"
 
-#: labels/templates/labels_index.html:5
+#: templates/labels_index.html:5
 msgid "Labels"
 msgstr "Метки"
 
-#: labels/templates/labels_index.html:12
+#: templates/labels_index.html:12
 msgid "Date of creation"
 msgstr "Дата создания"
 
-#: labels/templates/labels_index.html:23
+#: templates/labels_index.html:23
 msgid "Delete"
 msgstr "Удалить"
 
-#: labels/views.py:28
+#: views.py:28
 msgid "Label created successfully"
 msgstr "Метка успешно создана"
 
-#: labels/views.py:45
+#: views.py:45
 msgid "Label changed successfully"
 msgstr "Метка успешно изменена"
 
-#: labels/views.py:56
+#: views.py:56
 msgid "Label removed successfully"
 msgstr "Метка успешно удалена"

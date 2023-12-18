@@ -13,6 +13,9 @@ class CreateLabel(ModelForm):
                 'class': 'form-control',
             })
         }
+        labels = {
+            'name':  _('Name'),
+        }
 
 
 class UpdateLabel(ModelForm):
@@ -24,4 +27,7 @@ class UpdateLabel(ModelForm):
                 'placeholder': _('Name'),
                 'class': 'form-control',
             })
+        }
+        labels = {
+            'name': _('Name'),
         }
