@@ -35,8 +35,8 @@ msgstr "Войти"
 
 #: views.py:17
 msgid "You are logged in"
-msgstr "Вы успешно вошли"
+msgstr "Вы залогинены"
 
 #: views.py:24
 msgid "You are logged out"
-msgstr "Вы вышли"
+msgstr "Вы разлогинены"
