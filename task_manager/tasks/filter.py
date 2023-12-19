@@ -29,7 +29,6 @@ class TaskFilter(django_filters.FilterSet):
         model = Task
         fields = ['status', 'executor', 'labels']
 
-
 class CheckBox(forms.Form):
     self_tasks = forms.BooleanField(
         required=False,
