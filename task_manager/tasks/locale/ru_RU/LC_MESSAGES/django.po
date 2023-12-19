@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-12-17 22:43+0500\n"
+"POT-Creation-Date: 2023-12-19 20:45+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,106 +17,106 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: tasks/decorators.py:12
+#: decorators.py:12
 msgid "You are not authorized! Please log in"
 msgstr "Вы не авторизованы! Пожалуйста, выполните вход"
 
-#: tasks/decorators.py:22
+#: decorators.py:22
 msgid "Only its author can delete a task"
 msgstr "Задачу может удалить только её автор"
 
-#: tasks/filter.py:11 tasks/forms.py:35 tasks/templates/task_show.html:23
-#: tasks/templates/tasks_index.html:36
+#: filter.py:11 forms.py:35 templates/task_show.html:23
+#: templates/tasks_index.html:36
 msgid "Status"
 msgstr "Статус"
 
-#: tasks/filter.py:17 tasks/forms.py:36 tasks/templates/task_show.html:19
-#: tasks/templates/tasks_index.html:38
+#: filter.py:17 forms.py:36 templates/task_show.html:19
+#: templates/tasks_index.html:38
 msgid "Executor"
 msgstr "Исполнитель"
 
-#: tasks/filter.py:23
+#: filter.py:23
 msgid "Label"
 msgstr "Метка"
 
-#: tasks/forms.py:13 tasks/forms.py:33 tasks/templates/tasks_index.html:35
+#: forms.py:13 forms.py:33 templates/tasks_index.html:35
 msgid "Name"
 msgstr "Имя"
 
-#: tasks/forms.py:17 tasks/forms.py:34
+#: forms.py:17 forms.py:34
 msgid "Description"
 msgstr "Описание"
 
-#: tasks/forms.py:37 tasks/templates/task_show.html:32
+#: forms.py:37 templates/task_show.html:32
 msgid "Labels"
 msgstr "Метки"
 
-#: tasks/templates/task_create.html:5 tasks/templates/tasks_index.html:6
+#: templates/task_create.html:5 templates/tasks_index.html:6
 msgid "Create task"
 msgstr "Создать задачу"
 
-#: tasks/templates/task_create.html:16
+#: templates/task_create.html:16
 msgid "Create"
 msgstr "Создать"
 
-#: tasks/templates/task_delete.html:5
+#: templates/task_delete.html:5
 msgid "Task removing"
 msgstr "Удаление задачи"
 
-#: tasks/templates/task_delete.html:6
+#: templates/task_delete.html:6
 msgid "Are you sure you want to delete"
 msgstr "Вы уверены, что хотите удалить"
 
-#: tasks/templates/task_delete.html:10
+#: templates/task_delete.html:10
 msgid "Yes, delete"
 msgstr "Да, удалить"
 
 # msgid "Create task"
 # msgstr "Создать задачу"
-#: tasks/templates/task_show.html:5
+#: templates/task_show.html:5
 msgid "View task"
 msgstr "Просмотр задачи"
 
-#: tasks/templates/task_show.html:15 tasks/templates/tasks_index.html:37
+#: templates/task_show.html:15 templates/tasks_index.html:37
 msgid "Author"
 msgstr "Автор"
 
-#: tasks/templates/task_show.html:27 tasks/templates/tasks_index.html:39
+#: templates/task_show.html:27 templates/tasks_index.html:39
 msgid "Date of creation"
 msgstr "Дата создания"
 
-#: tasks/templates/task_show.html:42 tasks/templates/task_update.html:16
+#: templates/task_show.html:42 templates/task_update.html:16
 msgid "Change"
 msgstr "Изменить"
 
-#: tasks/templates/task_show.html:44
+#: templates/task_show.html:44
 msgid "Delete"
 msgstr "Удалить"
 
-#: tasks/templates/task_update.html:5
+#: templates/task_update.html:5
 msgid "Task change"
 msgstr "Изменение задачи"
 
-#: tasks/templates/tasks_index.html:5
+#: templates/tasks_index.html:5
 msgid "Tasks"
 msgstr "Задачи"
 
-#: tasks/templates/tasks_index.html:21
+#: templates/tasks_index.html:21
 msgid "Only my tasks"
 msgstr "Только свои задачи"
 
-#: tasks/templates/tasks_index.html:25
+#: templates/tasks_index.html:25
 msgid "Show"
 msgstr "Показать"
 
-#: tasks/views.py:38
+#: views.py:38
 msgid "Task created successfully"
 msgstr "Задача успешно создана"
 
-#: tasks/views.py:69
+#: views.py:69
 msgid "Task changed successfully"
 msgstr "Задача успешно изменена"
 
-#: tasks/views.py:80
+#: views.py:80
 msgid "Task removed successfully"
 msgstr "Задача успешно удалена"
