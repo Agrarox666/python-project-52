@@ -1,8 +1,8 @@
-from django.contrib.auth.models import User
+from django.contrib.auth.models import AbstractUser
 from django.db.models import DateTimeField
 
 
-class TaskUser(User):
+class TaskUser(AbstractUser):
     created_at = DateTimeField(auto_now_add=True)
 
     def __str__(self):
