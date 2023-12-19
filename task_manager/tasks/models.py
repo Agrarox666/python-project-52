@@ -4,16 +4,17 @@ from django.utils.translation import gettext_lazy as _
 
 from task_manager.labels.models import Label
 from task_manager.statuses.models import Status
+from task_manager.users.models import TaskUser
 
 
 class Task(models.Model):
-    executor = models.ForeignKey(get_user_model(),
+    executor = models.ForeignKey(TaskUser,
                                  on_delete=models.PROTECT,
                                  related_name='task_executor',
                                  verbose_name=_('Executor'),
                                  blank=True,
                                  null=True)
-    author = models.ForeignKey(get_user_model(),
+    author = models.ForeignKey(TaskUser,
                                on_delete=models.PROTECT,
                                related_name='task_author',
                                verbose_name=_('Author'))

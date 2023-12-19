@@ -6,4 +6,4 @@ class TaskUser(User):
     created_at = DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.username
+        return self.get_full_name()

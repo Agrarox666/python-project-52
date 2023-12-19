@@ -7,13 +7,13 @@ from task_manager.tasks.models import Task
 
 class TaskFilter(django_filters.FilterSet):
     status = django_filters.AllValuesFilter(
-        field_name='status__name',
+        field_name='status',
         label=_('Status'),
         widget=forms.Select(attrs={
             'class': 'form-select is-valid'
         }))
     executor = django_filters.AllValuesFilter(
-        field_name='executor__username',
+        field_name='executor',
         label=_('Executor'),
         widget=forms.Select(attrs={
             'class': 'form-select is-valid'
