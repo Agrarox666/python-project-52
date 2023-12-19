@@ -1,11 +1,11 @@
 import django_filters
 from django import forms
-
+from django.utils.translation import gettext_lazy as _
 from task_manager.tasks.models import Task
 
 
 class TaskFilter(django_filters.FilterSet):
-    '''status = django_filters.AllValuesFilter(
+    status = django_filters.AllValuesFilter(
         field_name='status__name',
         label=_('Status'),
         widget=forms.Select(attrs={
@@ -18,11 +18,12 @@ class TaskFilter(django_filters.FilterSet):
             'class': 'form-select is-valid'
         }))
     labels = django_filters.AllValuesFilter(
+        null_value='',
         field_name='labels__name',
         label=_('Label'),
         widget=forms.Select(attrs={
             'class': 'form-select is-valid'
-        }))'''
+        }))
 
     class Meta:
         model = Task

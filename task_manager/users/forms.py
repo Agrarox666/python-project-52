@@ -48,6 +48,16 @@ class CreationForm(UserCreationForm):
         widget=password_confirmation_widget
     )
 
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        user.set_password(self.cleaned_data["password1"])
+        user.full_name = f'{user.first_name} {user.last_name}'
+        if commit:
+            user.save()
+            if hasattr(self, "save_m2m"):
+                self.save_m2m()
+        return user
+
     class Meta(UserCreationForm.Meta):
         model = TaskUser
         fields = fields
