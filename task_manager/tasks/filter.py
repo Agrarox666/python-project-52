@@ -1,6 +1,5 @@
 import django_filters
 from django import forms
-from django.utils.translation import gettext_lazy as _
 
 from task_manager.tasks.models import Task
 
@@ -28,6 +27,7 @@ class TaskFilter(django_filters.FilterSet):
     class Meta:
         model = Task
         fields = ['status', 'executor', 'labels']
+
 
 class CheckBox(forms.Form):
     self_tasks = forms.BooleanField(

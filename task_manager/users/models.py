@@ -1,7 +1,6 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.db.models import DateTimeField
-import django.db.models
 
 
 class TaskUser(AbstractUser):
@@ -10,7 +9,3 @@ class TaskUser(AbstractUser):
 
     def __str__(self):
         return self.get_full_name()
-
-
-
-
