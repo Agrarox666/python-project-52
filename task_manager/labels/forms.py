@@ -14,7 +14,7 @@ class CreateLabel(ModelForm):
             })
         }
         labels = {
-            'name':  _('Name'),
+            'name': _('Name'),
         }
 
 
