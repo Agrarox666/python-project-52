@@ -21,7 +21,7 @@ class Task(models.Model):
                                related_name='task_status',
                                verbose_name=_('Status'),
                                default=None)
-    labels = models.ManyToManyField(Label, default=None, blank=True, verbose_name=_('Labels'))
+    labels = models.ManyToManyField(Label, default=None, blank=True, verbose_name=_('Label'))
 
     name = models.CharField(max_length=150, unique=True)
     description = models.TextField(default=None)
