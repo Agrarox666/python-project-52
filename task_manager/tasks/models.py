@@ -18,7 +18,7 @@ class Task(models.Model):
                                on_delete=models.SET_DEFAULT,
                                related_name='task_status',
                                default=None)
-    labels = models.ManyToManyField(Label, default=None)
+    labels = models.ManyToManyField(Label, default=None, blank=True)
 
     name = models.CharField(max_length=150, unique=True)
     description = models.TextField(default=None)
