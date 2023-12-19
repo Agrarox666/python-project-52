@@ -6,7 +6,7 @@ from task_manager.tasks.models import Task
 
 
 class TaskFilter(django_filters.FilterSet):
-    status = django_filters.AllValuesFilter(
+    '''status = django_filters.AllValuesFilter(
         field_name='status__name',
         label=_('Status'),
         widget=forms.Select(attrs={
@@ -23,7 +23,7 @@ class TaskFilter(django_filters.FilterSet):
         label=_('Label'),
         widget=forms.Select(attrs={
             'class': 'form-select is-valid'
-        }))
+        }))'''
 
     class Meta:
         model = Task
