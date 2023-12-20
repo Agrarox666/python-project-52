@@ -18,8 +18,7 @@ class TaskFilter(django_filters.FilterSet):
             'class': 'form-select is-valid'
         }))
     labels = django_filters.AllValuesFilter(
-        null_value='',
-        field_name='labels',
+        field_name='labels__name',
         label=_('Label'),
         widget=forms.Select(attrs={
             'class': 'form-select is-valid'
