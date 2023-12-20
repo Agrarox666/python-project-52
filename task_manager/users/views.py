@@ -16,12 +16,12 @@ class UsersIndexView(View):
     def get(self, request, *args, **kwargs):
         users = TaskUser.objects.all()
         context = {'users': users}
-        return render(request, 'users_index.html', context)
+        return render(request, 'users/users_index.html', context)
 
 
 class UserCreateView(CreateView):
     form_class = CreationForm
-    template_name = 'user_create.html'
+    template_name = 'users/user_create.html'
 
     def get_success_url(self):
         messages.success(self.request, _('User created successfully'))
@@ -30,7 +30,7 @@ class UserCreateView(CreateView):
 
 class UserUpdateView(LoginRequiredMixin, UpdateView):
     form_class = UpdatingForm
-    template_name = 'user_update.html'
+    template_name = 'users/user_update.html'
     model = TaskUser
     success_url = reverse_lazy('get_users')
 
@@ -51,7 +51,7 @@ class UserUpdateView(LoginRequiredMixin, UpdateView):
 
 class UserDeleteView(LoginRequiredMixin, DeleteView):
     model = TaskUser
-    template_name = 'user_delete.html'
+    template_name = 'users/user_delete.html'
 
     def get_success_url(self):
         messages.success(self.request, _('User removed successfully'))

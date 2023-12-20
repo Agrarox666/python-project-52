@@ -18,13 +18,13 @@ class StatusView(View):
     def get(self, request, *args, **kwargs):
         statuses = Status.objects.all()
         context = {'statuses': statuses}
-        return render(request, 'statuses_index.html', context)
+        return render(request, 'statuses/statuses_index.html', context)
 
 
 class StatusCreateView(LoginRequiredMixin, CreateView):
     model = Status
     form_class = CreateStatus
-    template_name = 'status_create.html'
+    template_name = 'statuses/status_create.html'
 
     def get_success_url(self):
         messages.success(self.request, _('Status created successfully'))
@@ -37,7 +37,7 @@ class StatusUpdateView(LoginRequiredMixin, View):
         status_id = kwargs.get('pk')
         status = Status.objects.get(id=status_id)
         form = UpdateStatus(instance=status)
-        return render(request, 'status_update.html', {'form': form, 'status': status})
+        return render(request, 'statuses/status_update.html', {'form': form, 'status': status})
 
     def post(self, request, *args, **kwargs):
         status_id = kwargs.get('pk')
@@ -48,12 +48,12 @@ class StatusUpdateView(LoginRequiredMixin, View):
             messages.success(self.request, _('Status changed successfully'))
             return redirect('statuses_index')
         else:
-            return render(request, 'status_update.html', {'form': form, 'status': status})
+            return render(request, 'statuses/status_update.html', {'form': form, 'status': status})
 
 
 class StatusDeleteView(LoginRequiredMixin, DeleteView):
     model = Status
-    template_name = 'status_delete.html'
+    template_name = 'statuses/status_delete.html'
 
     def get_success_url(self):
         messages.success(self.request, _('Status removed successfully'))
