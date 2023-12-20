@@ -22,11 +22,15 @@ class TaskView(View):
             author_tasks = Task.objects.filter(author=request.user.id)
             f = TaskFilter(request.GET, queryset=author_tasks)
             c = CheckBox(request.GET)
-            return render(request, 'tasks/tasks_index.html', {'tasks': f.qs, 'filter': f, 'checkbox': c})
+            return render(request,
+                          'tasks/tasks_index.html',
+                          {'tasks': f.qs, 'filter': f, 'checkbox': c})
 
         f = TaskFilter(request.GET, queryset=Task.objects.all())
         c = CheckBox(request.GET)
-        return render(request, 'tasks/tasks_index.html', {'tasks': f.qs, 'filter': f, 'checkbox': c})
+        return render(request,
+                      'tasks/tasks_index.html',
+                      {'tasks': f.qs, 'filter': f, 'checkbox': c})
 
 
 class TaskCreateView(LoginRequiredMixin, CreateView):
