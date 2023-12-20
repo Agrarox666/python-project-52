@@ -20,37 +20,37 @@ msgstr ""
 #: authorization/forms.py:8 authorization/forms.py:12
 #: templates/users/users_index.html:10 users/forms.py:19
 msgid "Username"
-msgstr ""
+msgstr "Имя пользователя"
 
 #: authorization/forms.py:20 authorization/forms.py:24 users/forms.py:28
 #: users/forms.py:40
 msgid "Password"
-msgstr ""
+msgstr "Пароль"
 
 #: authorization/templates/login.html:5 templates/main.html:24
 msgid "Log in"
-msgstr ""
+msgstr "Вход"
 
 #: authorization/templates/login.html:19
 msgid "Login"
-msgstr ""
+msgstr "Войти"
 
 #: authorization/views.py:17
 msgid "You are logged in"
-msgstr ""
+msgstr "Вы залогинены"
 
 #: authorization/views.py:24
 msgid "You are logged out"
-msgstr ""
+msgstr "Вы разлогинены"
 
 #: labels/decorators.py:12 statuses/decorators.py:12 tasks/decorators.py:12
 #: users/decorators.py:10
 msgid "You are not authorized! Please log in"
-msgstr ""
+msgstr "Вы не авторизованы! Пожалуйста, выполните вход"
 
 #: labels/decorators.py:22
 msgid "Cannot remove label because it is in use"
-msgstr ""
+msgstr "Невозможно удалить метку, потому что она используется"
 
 #: labels/forms.py:12 labels/forms.py:17 labels/forms.py:27 labels/forms.py:32
 #: statuses/forms.py:13 statuses/forms.py:18 statuses/forms.py:28
