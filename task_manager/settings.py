@@ -81,19 +81,18 @@ TEMPLATES = [
         },
     },
 ]
-
-DEVELOPMENT_MODE = os.getenv("DEVELOPMENT_MODE")
-if DEVELOPMENT_MODE:
-    DATABASES = {
+DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.sqlite3",
             "NAME": os.path.join(BASE_DIR, "users_data_base"),
         }
-    }
-else:
-    DATABASES = {
-        "default": dj_database_url.parse(os.environ.get("DATABASE_URL"), conn_max_age=600),
-    }
+}
+if os.getenv("DEVELOPMENT_MODE"):
+    DATABASES.update(
+        {
+            "default": dj_database_url.parse(os.environ.get("DATABASE_URL"), conn_max_age=600),
+        }
+    )
 
 
 AUTH_PASSWORD_VALIDATORS = [
