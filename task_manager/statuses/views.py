@@ -7,7 +7,7 @@ from django.views import View
 from django.views.generic import CreateView, DeleteView
 from django.utils.translation import gettext as _
 
-from task_manager.statuses.decorators import login_required
+from task_manager.statuses.auth_helper import login_required
 from task_manager.statuses.forms import CreateStatus, UpdateStatus
 from task_manager.statuses.models import Status
 

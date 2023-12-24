@@ -6,7 +6,7 @@ from django.utils.decorators import method_decorator
 from django.views import View
 from django.views.generic import CreateView, DeleteView
 from django.utils.translation import gettext as _
-from task_manager.labels.decorators import login_required
+from task_manager.labels.auth_helper import login_required
 from task_manager.labels.forms import CreateLabel, UpdateLabel
 from task_manager.labels.models import Label
 

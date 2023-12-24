@@ -7,7 +7,7 @@ from django.views import View
 from django.views.generic import CreateView, DeleteView
 from django.utils.translation import gettext as _
 
-from task_manager.tasks.decorators import login_required
+from task_manager.tasks.auth_helper import login_required
 from task_manager.tasks.filter import TaskFilter, CheckBox
 from task_manager.tasks.forms import TaskForm
 from task_manager.tasks.models import Task
