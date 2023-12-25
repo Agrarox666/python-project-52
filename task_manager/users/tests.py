@@ -1,3 +1,4 @@
+from django import test
 from django.test import TestCase
 from django.urls import reverse
 
@@ -5,6 +6,9 @@ from .models import TaskUser
 from ..read_json import get_json_data
 
 
+@test.modify_settings(MIDDLEWARE={'remove': [
+    'rollbar.contrib.django.middleware.RollbarNotifierMiddleware',
+]})
 class TaskUserTestCase(TestCase):
     fixture = 'users.json'
 
