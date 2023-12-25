@@ -1,28 +1,70 @@
 from django.test import TestCase
+from django.urls import reverse
+
 from .models import TaskUser
+from ..read_json import get_json_data
 
 
 class TaskUserTestCase(TestCase):
+    fixture = 'users.json'
+
     def setUp(self):
-        TaskUser(first_name='Igor', last_name='Loskutov', username='agrarox').save()
-        TaskUser(first_name='Denis', last_name='Ivanov', username='denchik').save()
+        self.user_data = get_json_data(self.fixture)
+        self.client.post(
+            reverse('user_create'),
+            self.user_data['user#1']
+        )
+        self.client.login(
+            username=self.user_data['user#1']['username'],
+            password=self.user_data['user#1']['password1']
+        )
 
     def testCreate(self):
-        self.assertEqual(len(TaskUser.objects.all()), 2)
-
-        self.assertEqual(TaskUser.objects.all()[0].first_name, 'Igor')
-        self.assertEqual(TaskUser.objects.all()[0].last_name, 'Loskutov')
-        self.assertEqual(TaskUser.objects.get(id=1).username, 'agrarox')
-        self.assertEqual(TaskUser.objects.get(id=2).first_name, 'Denis')
+        self.assertEqual(len(TaskUser.objects.all()), 1)
+        test_user = self.user_data['user#2']
+        response = self.client.post(
+            reverse('user_create'),
+            test_user
+        )
+        self.assertEqual(
+            response.status_code,
+            302
+        )
+        self.assertEqual(
+            len(TaskUser.objects.all()),
+            2
+        )
 
     def testUpdate(self):
-        user1 = TaskUser.objects.get(id=1)
-        user1.username = 'updated_username'
-        user1.save()
-        self.assertEqual(TaskUser.objects.get(id=1).username, 'updated_username')
+        test_user = TaskUser.objects.get(first_name=self.user_data['user#1']['first_name'])
+        update_user = self.user_data['user#2']
+        response = self.client.post(
+            reverse('user_update', args=[test_user.id]),
+            update_user
+        )
+        self.assertEqual(
+            response.status_code,
+            302
+        )
+        self.assertEqual(
+            TaskUser.objects.get(id=test_user.id).first_name,
+            self.user_data['user#2'].get('first_name')
+        )
 
     def testDelete(self):
-        self.assertEqual(len(TaskUser.objects.all()), 2)
-        TaskUser.objects.get(first_name='Igor').delete()
-        self.assertEqual(len(TaskUser.objects.all()), 1)
-        self.assertEqual(TaskUser.objects.all()[0].username, 'denchik')
+        test_user = TaskUser.objects.all()[0]
+        self.assertEqual(
+            len(TaskUser.objects.all()),
+            1
+        )
+        response = self.client.post(
+            reverse('user_delete', args=[test_user.id])
+        )
+        self.assertEqual(
+            response.status_code,
+            302
+        )
+        self.assertEqual(
+            len(TaskUser.objects.all()),
+            0
+        )

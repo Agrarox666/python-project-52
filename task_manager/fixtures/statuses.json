@@ -1,0 +1,16 @@
+{
+  "status#1": {
+    "id": 1,
+    "name": "Done"
+  },
+  "status#2": {
+    "id": 2,
+    "name": "In process"
+  },
+  "status_update": {
+    "name": "Done updated"
+  },
+  "task_status": {
+    "name": "task_status_name"
+  }
+}

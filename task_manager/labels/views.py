@@ -11,7 +11,6 @@ from task_manager.labels.forms import CreateLabel, UpdateLabel
 from task_manager.labels.models import Label
 
 
-# Create your views here.
 class LabelView(LoginRequiredMixin, View):
 
     def get(self, request, *args, **kwargs):

@@ -22,6 +22,7 @@ class UsersIndexView(View):
 class UserCreateView(CreateView):
     form_class = CreationForm
     template_name = 'users/user_create.html'
+    model = TaskUser
 
     def get_success_url(self):
         messages.success(self.request, _('User created successfully'))

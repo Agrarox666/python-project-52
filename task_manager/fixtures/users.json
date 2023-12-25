@@ -1,0 +1,33 @@
+{
+  "test": {
+    "first_name": "Igor",
+    "last_name": "Loskutov",
+    "username": "agrx",
+    "password": "simple_password"
+  },
+  "user#1": {
+    "first_name": "Denis",
+    "last_name": "Ivanov",
+    "username": "dench",
+    "password1": "simple_password_again",
+    "password2": "simple_password_again"
+  },
+  "user#2": {
+    "first_name": "Ivan",
+    "last_name": "Leshev",
+    "username": "ivlesh",
+    "password1": "insecure_pass",
+    "password2": "insecure_pass"
+  },
+  "task_user1": {
+    "first_name": "Mike",
+    "last_name": "Tyson",
+    "username": "tym",
+    "password": "mike_pass"
+  },
+  "task_user2": {
+    "first_name": "Elvis",
+    "last_name": "Presley",
+    "username": "prelv"
+  }
+}

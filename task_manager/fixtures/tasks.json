@@ -1,0 +1,19 @@
+{
+  "test": {
+    "name": "Test task",
+  },
+  "user#1": {
+    "first_name": "Denis",
+    "last_name": "Ivanov",
+    "username": "dench",
+    "password1": "simple_password_again",
+    "password2": "simple_password_again"
+  },
+  "user#2": {
+    "first_name": "Ivan",
+    "last_name": "Leshev",
+    "username": "ivlesh",
+    "password1": "insecure_pass",
+    "password2": "insecure_pass"
+  }
+}
