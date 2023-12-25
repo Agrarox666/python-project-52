@@ -28,6 +28,7 @@ jobs:
     - name: Run tests
       env:
         DEVELOPMENT_MODE: ${{ secrets.DEVELOPMENT_MODE }}
+        SECRET_KEY: ${{ secrets.SECRET_KEY }}
       run: |
         make install
         make tests
