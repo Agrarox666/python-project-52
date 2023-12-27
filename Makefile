@@ -1,6 +1,9 @@
 install:
 	sh ./build.sh
 
+install-prod:
+	sh ./build-prod.sh
+
 lint:
 	poetry run flake8
 
